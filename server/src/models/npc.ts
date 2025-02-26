@@ -1,0 +1,51 @@
+import { Model, DataTypes } from "sequelize";
+import sequelize from "./modelindex";
+
+interface NPCAttributes {
+  id: bigint,
+  name: string,
+  location: string,
+  description: string,
+  favorite: boolean
+}
+
+class NPC extends Model<NPCAttributes> implements NPCAttributes {
+  public id!: bigint;
+  public name!: string;
+  public location!: string;
+  public description!: string;
+  public favorite!: boolean
+}
+
+// initializing a new table with sequelize
+NPC.init(
+  {
+    id: {
+      type: DataTypes.BIGINT,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    favorite: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+    }
+  }, 
+  {
+    sequelize, 
+    tableName: "npc"
+  }
+);
+
+export default NPC; 
