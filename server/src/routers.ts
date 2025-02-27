@@ -8,13 +8,13 @@ const router: Router = express.Router();
 // /npc (POST): add an npc to database
 // /npc (POST): add an npc to favorites list
 // /npc/:npcId (DELETE): remove npc from favorites list
+// /npc/:npcId (PUT): edit an already existing npc  
 
 // get all the npcs stored in the database
 router.get('/npc', async (req: Request, res: Response) => {
     try {
         const npctemplates = await NPC.findAll();
         res.status(200).json(npctemplates)
-
     } catch (error) {
         console.log(error);
         res.status(400).json({ error: error })
@@ -49,15 +49,29 @@ router.post('/npc', async (req: Request, res: Response) => {
     }
 });
 
-// // delete npc from database
-router.delete('/npc/:npcId', async (req: Request<{ npcId: number }>, res: Response) => {
-    const npcId: number = req.params.npcId;
+// delete npc from database
+router.delete('/npc/:id', async (req: Request<{ id: number }>, res: Response) => {
+    const id: number = req.params.id;
     try {
-        const deleteCount = NPC.destroy({ where: { id: npcId } });
+        const deleteCount = NPC.destroy({ where: { id: id } });
         res.json({ deleteCount });
     } catch (error) {
         console.log(error);
     }
 });
+
+// edit already existing npc because they aren't good enough, that's why they have to be edited, fact.
+// they should be grateful that they are not killed instead 
+router.put('npc/:id', async (req: Request<{ id: number }>, res: Response) => {
+    {
+        const id: number = req.params.id;
+        try {
+            const editedNPC = NPC.update(req.body, {where: {id}});
+            res.json({ editedNPC });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+})
 
 export default router; 

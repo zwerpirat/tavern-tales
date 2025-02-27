@@ -15,12 +15,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const routers_1 = __importDefault(require("./routers"));
 const modelindex_1 = __importDefault(require("./models/modelindex"));
+const cors_1 = __importDefault(require("cors"));
 // Create a new express application instance
 const app = (0, express_1.default)();
 // Set the network port
 const port = 3000;
+// cors configurations
+const corsOptions = {
+    origin: '*', // Allow everything for now
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true
+};
 app.use(express_1.default.json());
-app.use('/api', routers_1.default);
+app.use((0, cors_1.default)(corsOptions));
+app.use('/', routers_1.default);
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

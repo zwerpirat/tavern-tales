@@ -38,12 +38,12 @@ NPC.init(
       allowNull: false,
     },
     favorite: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     }
-  }, 
+  },
   {
-    sequelize, 
+    sequelize,
     tableName: "npc"
   }
 );
