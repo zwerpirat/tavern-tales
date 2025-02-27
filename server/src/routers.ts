@@ -62,14 +62,30 @@ router.delete('/npc/:id', async (req: Request<{ id: number }>, res: Response) =>
 
 // edit already existing npc because they aren't good enough, that's why they have to be edited, fact.
 // they should be grateful that they are not killed instead 
-router.put('npc/:id', async (req: Request<{ id: number }>, res: Response) => {
+router.put('/npc/:id', async (req: Request<{ id: number }>, res: Response) => {
     {
         const id: number = req.params.id;
+        console.log(id)
         try {
-            const editedNPC = NPC.update(req.body, {where: {id}});
-            res.json({ editedNPC });
+            const npc = await NPC.findByPk(id);
+            if(npc) {
+                await npc.update(req.body);
+                await npc.save();
+                res.status(201).json(npc);
+            } else {
+                res.status(404).json({error:'Buddy not found'});
+            }
+            // Varian 1
+            // const result = await NPC.update(req.body, {where: {id}});
+            // if (result.length == 1 && result[0] === 1) {
+            //     const editedNPC = await NPC.findByPk(id);
+            //     res.json({editedNPC});
+            // } else {
+            //     res.status(404).json({error:'Could not find your buddy!'});
+            // }
         } catch (error) {
             console.log(error);
+            res.status(500).json(error)
         }
     }
 })
