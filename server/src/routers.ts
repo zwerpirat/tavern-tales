@@ -7,8 +7,9 @@ const router: Router = express.Router();
 // /npc (GET): show all npcs in database
 // /npc (POST): add an npc to database
 // /npc (POST): add an npc to favorites list
-// /npc/:npcId (DELETE): remove npc from favorites list
-// /npc/:npcId (PUT): edit an already existing npc  or patch? 
+// TODO: implement favorite feature in backend or frontend?
+// /npc/:npcId (DELETE): remove npc from database
+// /npc/:npcId (PUT): edit an already existing npc
 
 // get all the npcs stored in the database
 router.get('/npc', async (req: Request, res: Response) => {
@@ -30,6 +31,7 @@ router.post('/npc', async (req: Request, res: Response) => {
         const missingParameters = [];
         if (!req.body.name) missingParameters.push('name');
         if (!req.body.race) missingParameters.push('race');
+       // if (!req.body.category) missingParameters.push('category');
         if (!req.body.location) missingParameters.push('location');
         if (!req.body.description) missingParameters.push('description');
 
@@ -75,14 +77,6 @@ router.put('/npc/:id', async (req: Request<{ id: number }>, res: Response) => {
             } else {
                 res.status(404).json({error:'Buddy not found'});
             }
-            // Varian 1
-            // const result = await NPC.update(req.body, {where: {id}});
-            // if (result.length == 1 && result[0] === 1) {
-            //     const editedNPC = await NPC.findByPk(id);
-            //     res.json({editedNPC});
-            // } else {
-            //     res.status(404).json({error:'Could not find your buddy!'});
-            // }
         } catch (error) {
             console.log(error);
             res.status(500).json(error)

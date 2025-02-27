@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import ttLogo from './assets/tt_bgp.png'
+import bgp from './assets/bgp.jpg'
 import './App.css'
 
 
@@ -20,20 +19,17 @@ const App = () => {
     <>
       <div>
         <a href="https://www.dndbeyond.com/" target="_blank">
-          <img src={ttLogo} className="logo" alt="Vite logo" />
+          <h1><img src={ttLogo} className="logo" alt="hero-image" /></h1>
         </a>
       </div>
-      <h1>Tavern Tales</h1>
+      <h1>Welcome Adventurers!</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          Monsters slayed: {count}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Click on the image to be redirected to DnDBeyond
       </p>
     </>
   )

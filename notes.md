@@ -54,3 +54,14 @@ npm install
 npm run dev
 
 //https://publicapis.io/bandcamp-api?form=MG0AV3
+
+
+Codesnippets, to be deleted:
+            // Variant 1 to edit npcs
+            // const result = await NPC.update(req.body, {where: {id}});
+            // if (result.length == 1 && result[0] === 1) {
+            //     const editedNPC = await NPC.findByPk(id);
+            //     res.json({editedNPC});
+            // } else {
+            //     res.status(404).json({error:'Could not find your buddy!'});
+            // }
