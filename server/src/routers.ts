@@ -8,7 +8,7 @@ const router: Router = express.Router();
 // /npc (POST): add an npc to database
 // /npc (POST): add an npc to favorites list
 // /npc/:npcId (DELETE): remove npc from favorites list
-// /npc/:npcId (PUT): edit an already existing npc  
+// /npc/:npcId (PUT): edit an already existing npc  or patch? 
 
 // get all the npcs stored in the database
 router.get('/npc', async (req: Request, res: Response) => {
