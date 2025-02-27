@@ -17,20 +17,22 @@ const App = () => {
 
   return (
     <>
-      <div>
-        <a href="https://www.dndbeyond.com/" target="_blank">
-          <h1><img src={ttLogo} className="logo" alt="hero-image" /></h1>
-        </a>
+      <div className='body'>
+        <div className='herobar'>
+          <a href="https://www.dndbeyond.com/">
+            <img src={ttLogo} className="hero-image" />
+          </a>
+        </div>
+        <h1>Welcome Adventurers!</h1>
+        <div className="card">
+          <button onClick={() => setCount((count) => count + 1)}>
+            Monsters slayed: {count}
+          </button>
+        </div>
+        <p className="read-the-docs">
+          Click on the image to be redirected to DnDBeyond
+        </p>
       </div>
-      <h1>Welcome Adventurers!</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Monsters slayed: {count}
-        </button>
-      </div>
-      <p className="read-the-docs">
-        Click on the image to be redirected to DnDBeyond
-      </p>
     </>
   )
 }
