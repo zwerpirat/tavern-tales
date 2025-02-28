@@ -15,12 +15,10 @@ const API_OPTIONS = {
 };
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  // const [npcs, setNPCs] = useState([]);
-  // const [npcOfTheDay, setNPCOfTheDay] = useState({});
 
   return (
       <div className='body'>
-        <header>
+        <header className='header-image'>
           <img src={ttLogo} />
           <h1> Welcome Adventurers!</h1>
         </header>

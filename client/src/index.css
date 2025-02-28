@@ -36,8 +36,13 @@ body {
 .herobar {
   margin-top: 0px;
   padding: 0px;
-  background-image: url('./assets/tt_bgp.png');
   background-size: cover;
+  overflow: hidden;
+}
+
+.hero-image {
+  height: 10px;
+  background-image: url('./assets/tt_bgp.png');
 }
 
 .navbar {

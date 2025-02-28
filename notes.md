@@ -57,6 +57,8 @@ npm run dev
 
 
 Codesnippets, to be deleted:
+
+BACKEND:
             // Variant 1 to edit npcs
             // const result = await NPC.update(req.body, {where: {id}});
             // if (result.length == 1 && result[0] === 1) {
@@ -65,3 +67,14 @@ Codesnippets, to be deleted:
             // } else {
             //     res.status(404).json({error:'Could not find your buddy!'});
             // }
+
+FRONTEND:
+  // const [npcs, setNPCs] = useState([]);
+  // const [npcOfTheDay, setNPCOfTheDay] = useState({});
+
+    // debounce search term to prevent making too many API requests
+    // useDebounce(() => setDebouncedSearchTerm(searchTerm), 500, [searchTerm]);
+
+    // useEffect(() => {
+    //   fetchMovies(debouncedSearchTerm);
+    // }, [debouncedSearchTerm]);
