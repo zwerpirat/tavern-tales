@@ -20,5 +20,4 @@ const NpcTemplate = ({ npc: { name, category, race, location, description, favor
         </div>
     )
 }
-
 export default NpcTemplate;

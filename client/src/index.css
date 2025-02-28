@@ -3,17 +3,14 @@
   margin: 0px;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  max-width: 1280px;
+  text-align: center;
 
   color-scheme: light dark;
   color: rgba(30, 149, 147, 0.87);
   background-color: #f0eded;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
+
 .hero-image {
   height: 6em;
   max-width: 100%;
@@ -28,27 +25,38 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url(/client/src/assets/bgp.jpg);
 }
 .herobar {
   margin-top: 0px;
   padding: 0px;
   background-image: url('./assets/tt_bgp.png');
   background-size: cover;
+}
+
+.navbar {
+  background-color: #e8e8ef;
+}
+
+.search-bar {
+  height: 50px;
+  width: 600px;
+  padding-left: 50px;
+  padding-right: 100px;
+  margin-left: 20px;
+  background-color: rgb(41, 106, 101);
+  font-weight: bold;
+  font-family: fantasy;
+}
+
+.search-bar:hover{
+  filter: drop-shadow(0 0 1em #45c3c1b7);
 }
 
 h1 {
@@ -63,27 +71,11 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #0786c6;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  background-color: #747bff;
 }

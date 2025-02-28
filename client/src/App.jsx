@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import ttLogo from './assets/tt_bgp.png'
-import bgp from './assets/bgp.jpg'
-import './App.css'
-import NpcTemplate from './components/NpcTemplate'
-
+import { useState } from 'react';
+import ttLogo from './assets/tt_bgp2.png';
+import bgp from './assets/bgp.jpg';
+import NpcTemplate from './components/NpcTemplate/NpcTemplate';
+import NpcForm from './components/NpcForm/NpcForm';
+import Search from './components/Search';
 
 // API setting to localhost + get method
 const API_BASE_URL = 'http://localhost:3000/npc';
@@ -14,38 +14,33 @@ const API_OPTIONS = {
   }
 };
 const App = () => {
-  const [count, setCount] = useState(0)
+  const [searchTerm, setSearchTerm] = useState('');
+  // const [npcs, setNPCs] = useState([]);
+  // const [npcOfTheDay, setNPCOfTheDay] = useState({});
 
   return (
-    <>
       <div className='body'>
-        <div className='herobar'>
-          <a href="https://www.dndbeyond.com/">
-            <img src={ttLogo} className="hero-image" />
-          </a>
+        <header>
+          <img src={ttLogo} />
+          <h1> Welcome Adventurers!</h1>
+        </header>
+        <div className='navbar'>
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div>
-        <h1>Welcome Adventurers!</h1>
-
         <section>
           <h2>NPC of the day</h2>
           <ul>
-            {NpcTemplate}
+            {/* <NpcTemplate npc={npcOfTheDay} /> */}
           </ul>
         </section>
-        
+
         {/*showing all the npcs on click */}
         <div className='all-npcs'>
           <button onClick={() => setCount((count) => count + 1)}>
             Show all NPCs
           </button>
         </div>
-
-        <p className="read-the-docs">
-          Click on the image to be redirected to DnDBeyond
-        </p>
       </div>
-    </>
   )
 }
-
 export default App
