@@ -5,6 +5,7 @@ import NpcTemplate from './components/NpcTemplate/NpcTemplate';
 import NpcForm from './components/NpcForm/NpcForm';
 import Search from './components/Search';
 import bob from './assets/bob.png';
+import HeroNPCTemplate from './components/HeroNPC';
 
 // API setting to localhost + get method
 const API_BASE_URL = 'http://localhost:3000/npc';
@@ -53,9 +54,6 @@ const App = () => {
     }
   }
 
-  // editing an NPC
-
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -71,8 +69,9 @@ const App = () => {
       </div>
 
       <div className='hero-npc'>
-        <h2>NPC of the day</h2>
         <img src={bob} />
+        <HeroNPCTemplate />
+
       </div>
 
       {/*showing all the npcs on click */}

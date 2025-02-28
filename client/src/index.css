@@ -50,6 +50,11 @@ body {
   filter: drop-shadow(0 0 1em #45c3c1b7);
 }
 
+.hero-template {
+  border-style: groove;
+  border-color: brown;
+  border-width: 5px;
+}
 .hero-image {
   height: 6em;
   max-width: 100%;

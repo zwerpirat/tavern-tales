@@ -78,3 +78,8 @@ FRONTEND:
     // useEffect(() => {
     //   fetchMovies(debouncedSearchTerm);
     // }, [debouncedSearchTerm]);
+
+
+    FAVORITE:
+        onClick={() => setIsFavorite(true)}
+        ondblclick={() => setIsFavorite(false)}
