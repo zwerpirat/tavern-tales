@@ -18,6 +18,10 @@ NPC.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
+    category: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
     location: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,

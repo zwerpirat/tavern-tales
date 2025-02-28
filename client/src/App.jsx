@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ttLogo from './assets/tt_bgp.png'
 import bgp from './assets/bgp.jpg'
 import './App.css'
+import NpcTemplate from './components/NpcTemplate'
 
 
 // API setting to localhost + get method
@@ -24,11 +25,21 @@ const App = () => {
           </a>
         </div>
         <h1>Welcome Adventurers!</h1>
-        <div className="card">
+
+        <section>
+          <h2>NPC of the day</h2>
+          <ul>
+            {NpcTemplate}
+          </ul>
+        </section>
+        
+        {/*showing all the npcs on click */}
+        <div className='all-npcs'>
           <button onClick={() => setCount((count) => count + 1)}>
-            Monsters slayed: {count}
+            Show all NPCs
           </button>
         </div>
+
         <p className="read-the-docs">
           Click on the image to be redirected to DnDBeyond
         </p>
