@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import './style.css';
 
-const NpcForm = ({onAddNpc}) => {
-    const [isHovered, setIsHovered] = useState(false); 
+const NpcForm = ({ onAddNpc }) => {
+    const [isHovered, setIsHovered] = useState(false);
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [race, setRace] = useState('');
@@ -38,7 +38,15 @@ const NpcForm = ({onAddNpc}) => {
             </div>
             <div className="element-group">
                 <label>Category</label>
-                <input type="text" name="category" className="input-box" onChange={(InputNPC) => setCategory(InputNPC.target.value)} required placeholder="Select a category"></input>
+                <select name="category" className="input-box" onChange={(InputNPC) => setCategory(InputNPC.target.value)} required placeholder="Select a category">
+                <option value="select">Select a category</option>
+                <option value="humanoid">Humanoid</option>
+                <option value="monster">Monster</option>
+                <option value="item">Item</option>
+                <option value="city">City</option>
+                <option value="creature">Creature</option>
+                </select>
+
             </div>
             <div className="element-group">
                 <label>Race</label>

@@ -46,7 +46,7 @@ body {
   font-family: fantasy;
 }
 
-.search-bar:hover{
+.search-bar:hover {
   filter: drop-shadow(0 0 1em #45c3c1b7);
 }
 
@@ -57,17 +57,66 @@ body {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .hero-image:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .hero-image.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.npc-template {
+  border-style: dotted;
+  border-width: 2px;
+  background-color: #646cff;
+  color: black;
+  max-width: 50%;
+  align-self: center;
+  margin: 2em;
+}
+
+.create-npc-form {
+  border-style: dashed;
+  border-width: 5px;
+  background-color: rgb(239, 245, 245);
+  color: black;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.button-edit {
+  border-radius: 3px;
+  border: 1px solid;
+  padding: 0.6em 1em;
+  font-size: x-small;
+  font-weight: normal;
+  font-family: inherit;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 0.5em 0.5em;
+}
+
+.button-delete {
+  border-radius: 3px;
+  border: 1px solid;
+  padding: 0.6em 1em;
+  font-size: x-small;
+  font-weight: normal;
+  font-family: inherit;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
 
 button {
   border-radius: 8px;
@@ -80,6 +129,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
   background-color: #747bff;

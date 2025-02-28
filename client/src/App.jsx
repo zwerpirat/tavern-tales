@@ -4,6 +4,7 @@ import bgp from './assets/bgp.jpg';
 import NpcTemplate from './components/NpcTemplate/NpcTemplate';
 import NpcForm from './components/NpcForm/NpcForm';
 import Search from './components/Search';
+import bob from './assets/bob.png';
 
 // API setting to localhost + get method
 const API_BASE_URL = 'http://localhost:3000/npc';
@@ -17,6 +18,27 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [npcs, setNPCs] = useState([]);
 
+
+  // creating an NPC
+  const handleCreateNPC = async (newNPC) => {
+    const result = await fetch(API_BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newNPC)
+    });
+    if (result.ok) {
+      const npc = await result.json();
+      const npcs = [...npcs];
+      npcs.push(npc);
+    }
+
+  }
+
+  // deleting an npc
+
+  //const handleDeleteNPC = async ()
   const fetchData = async () => {
     try {
       const response = await fetch(API_BASE_URL);
@@ -31,6 +53,9 @@ const App = () => {
     }
   }
 
+  // editing an NPC
+
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -44,31 +69,36 @@ const App = () => {
       <div className='navbar'>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
-      <section>
+
+      <div className='hero-npc'>
         <h2>NPC of the day</h2>
+        <img src={bob} />
+      </div>
+
+      {/*showing all the npcs on click */}
+      <div className='all-npcs'>
+        {/*<button onClick={}> Show all NPCs </button>*/}
         <ul>
           {npcs.length > 0 ? (
             npcs.map(npc => (
               npc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              npc.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              npc.location.toLowerCase().includes(searchTerm.toLowerCase()) ? (
+                npc.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                npc.location.toLowerCase().includes(searchTerm.toLowerCase()) ? (
                 <NpcTemplate npc={npc} key={npc.id} />
-              ):(
+              ) : (
                 <p key={npc.id}></p>
               )
             ))
-          ):(
-            <p>No found</p>
+          ) : (
+            <p>Not found</p>
           )}
         </ul>
-      </section>
-
-      {/*showing all the npcs on click */}
-      <div className='all-npcs'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          Show all NPCs
-        </button>
       </div>
+
+      <div className='create-npc-form'>
+        <NpcForm onAddNpc={handleCreateNPC} />
+      </div>
+
     </div>
   )
 }
