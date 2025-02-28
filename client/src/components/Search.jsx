@@ -11,11 +11,10 @@ const Search = ({ searchTerm, setSearchTerm }) => {
                 placeholder="Search through the vast world of NPCs!"
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
-                img src={searchIcon} 
+                src={searchIcon}
                 />
             </div>
         </div>
     )
 }
-
 export default Search;
