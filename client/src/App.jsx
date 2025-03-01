@@ -18,6 +18,7 @@ const API_OPTIONS = {
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [npcs, setNPCs] = useState([]);
+  const [isVisible, setIsVisible] = useState(false)
 
 
   // creating an NPC
@@ -47,6 +48,10 @@ const App = () => {
       console.log(error);
     }
   }
+  
+  const handleClick = async () => {
+    setIsVisible(!isVisible)
+  }
 
   useEffect(() => {
     fetchData();
@@ -54,38 +59,40 @@ const App = () => {
 
   return (
     <div className='body'>
-      <header className='header-image'>
+      <header className='header'>
         <img src={ttLogo} />
         <h1> Welcome Adventurers!</h1>
       </header>
+
       <div className='navbar'>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
 
       <div className='hero-npc'>
         <img src={bob} />
-        <HeroNPCTemplate/>
+        <HeroNPCTemplate />
 
       </div>
 
       {/*showing all the npcs on click */}
       <div className='all-npcs'>
-        {/*<button onClick={}> Show all NPCs </button>*/}
-        <section className=''>
-          {npcs.length > 0 ? (
-            npcs.map(npc => (
-              npc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                npc.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                npc.location.toLowerCase().includes(searchTerm.toLowerCase()) ? (
-                <NpcTemplate npc={npc} key={npc.id} npcs={npcs} setNPCs={setNPCs} />
-              ) : (
-                <p key={npc.id}></p>
-              )
-            ))
-          ) : (
-            <p>Not found</p>
-          )}
-        </section>
+        <button className="button-show-all" onClick={handleClick}>Show all NPCs</button>
+        {isVisible &&
+          <section className=''>
+            {npcs.length > 0 ? (
+              npcs.map(npc => (
+                npc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  npc.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  npc.location.toLowerCase().includes(searchTerm.toLowerCase()) ? (
+                  <NpcTemplate npc={npc} key={npc.id} npcs={npcs} setNPCs={setNPCs} />
+                ) : (
+                  <p key={npc.id}></p>
+                )
+              ))
+            ) : (
+              <p>Not found</p>
+            )}
+          </section>}
       </div>
 
       <div className='create-npc-form'>

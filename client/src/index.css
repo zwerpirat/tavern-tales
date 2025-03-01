@@ -18,21 +18,13 @@ body {
   min-height: 100vh;
   background-image: url(/client/src/assets/bgp.jpg);
 }
-
-.herobar {
-  margin-top: 0px;
-  padding: 0px;
-  background-size: cover;
-  overflow: hidden;
-}
-
-.hero-image {
-  height: 10px;
-  background-image: url('./assets/tt_bgp.png');
+.header {
+  text-align: center;
 }
 
 .navbar {
   background-color: #e8e8ef;
+  overflow: hidden;
 }
 
 .search-bar {
@@ -45,6 +37,19 @@ body {
   font-weight: bold;
   font-family: fantasy;
 }
+.herobar {
+  margin-top: 0px;
+  padding: 0px;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.hero-image {
+  height: 10px;
+  background-image: url('./assets/tt_bgp.png');
+}
+
+
 
 .search-bar:hover {
   filter: drop-shadow(0 0 1em #45c3c1b7);

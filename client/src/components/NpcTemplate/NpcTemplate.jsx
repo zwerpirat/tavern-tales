@@ -28,6 +28,12 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
 
             <div className='name-title'> <h3>{npc.name}</h3></div>
             <div className='npc-content'>
+            <br />
+                {npc.image ? (
+                    <div className='npc-image'><img src={"http://localhost:3000/uploads/"+npc.image} width="100px"></img></div>
+                ):(
+                    <p><img src='./npc_image'></img></p>
+                )}
                 <div className='npc-category'> Category: {npc.category}</div>
                 <br />
                 <div className='npc-race'> Race: {npc.race}</div>
@@ -37,12 +43,7 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
                 <div className='npc-description'> Short Info: {npc.description}</div>
                 <br />
                 <div className='npc-favorite'> {npc.favorite}</div>
-                <br />
-                {npc.image ? (
-                    <div className='npc-image'><img src={"http://localhost:3000/uploads/"+npc.image} width="100px"></img></div>
-                ):(
-                    <p>No Image</p>
-                )}
+
             </div>
 
         </div>
