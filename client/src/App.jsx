@@ -37,9 +37,6 @@ const App = () => {
 
   }
 
-  // deleting an npc
-
-  //const handleDeleteNPC = async ()
   const fetchData = async () => {
     try {
       const response = await fetch(API_BASE_URL);
@@ -83,7 +80,7 @@ const App = () => {
               npc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 npc.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 npc.location.toLowerCase().includes(searchTerm.toLowerCase()) ? (
-                <NpcTemplate npc={npc} key={npc.id} />
+                <NpcTemplate npc={npc} key={npc.id} npcs={npcs} setNPCs={setNPCs} />
               ) : (
                 <p key={npc.id}></p>
               )

@@ -96,6 +96,7 @@ h1 {
 }
 
 .button-edit {
+  float: right;
   border-radius: 3px;
   border: 1px solid;
   padding: 0.6em 1em;
@@ -110,6 +111,7 @@ h1 {
 }
 
 .button-delete {
+  float: right;
   border-radius: 3px;
   border: 1px solid;
   padding: 0.6em 1em;
@@ -120,6 +122,22 @@ h1 {
   background-color: transparent;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 0.5em 0.5em;
+}
+.button-favorite {
+  float: right;
+  font-size: x-small;
+  font-weight: normal;
+  font-family: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.6em 1em;
+  margin: 0.5em 0.5em;
+
+
+}
+.button-favorite:hover {
+  background-color: darkorchid;
 }
 
 

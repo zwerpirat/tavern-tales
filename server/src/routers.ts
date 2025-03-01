@@ -51,9 +51,14 @@ router.post('/npc', async (req: Request, res: Response) => {
     }
 });
 
-// delete npc from database
-router.delete('/npc/:id', async (req: Request<{ id: number }>, res: Response) => {
-    const id: number = req.params.id;
+// delete npc from database 
+router.delete('/npc/:id', async (req: Request, res: Response) => {
+    const id = req.params.id;
+    if(id==='undefined') {
+        res.status(400).json({error: 'Invalid ID'});
+        return;
+    }
+
     try {
         const deleteCount = NPC.destroy({ where: { id: id } });
         res.json({ deleteCount });
@@ -64,10 +69,9 @@ router.delete('/npc/:id', async (req: Request<{ id: number }>, res: Response) =>
 
 // edit already existing npc because they aren't good enough, that's why they have to be edited, fact.
 // they should be grateful that they are not killed instead 
-router.put('/npc/:id', async (req: Request<{ id: number }>, res: Response) => {
+router.put('/npc/:id', async (req: Request, res: Response) => {
     {
-        const id: number = req.params.id;
-        console.log(id)
+        const id = req.params.id;
         try {
             const npc = await NPC.findByPk(id);
             if(npc) {

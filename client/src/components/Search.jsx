@@ -11,7 +11,6 @@ const Search = ({ searchTerm, setSearchTerm }) => {
                 placeholder="Search through the vast world of NPCs!"
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
-                src={searchIcon}
                 />
             </div>
         </div>

@@ -1,11 +1,11 @@
 import { Model, DataTypes } from "sequelize";
 import sequelize from "./modelindex";
 
-//TODO: Add 'category' as property (column) to table
 interface NPCAttributes {
   id: bigint,
   name: string,
   category: string,
+  race: string,
   location: string,
   description: string,
   favorite: boolean
@@ -15,6 +15,7 @@ class NPC extends Model<NPCAttributes> implements NPCAttributes {
   public id!: bigint;
   public name!: string;
   public category!: string;
+  public race!: string;
   public location!: string;
   public description!: string;
   public favorite!: boolean
@@ -33,6 +34,10 @@ NPC.init(
       allowNull: false,
     },
     category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    race: {
       type: DataTypes.STRING,
       allowNull: false,
     },
