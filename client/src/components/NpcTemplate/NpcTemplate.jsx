@@ -32,7 +32,7 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
                 {npc.image ? (
                     <div className='npc-image'><img src={"http://localhost:3000/uploads/"+npc.image} width="100px"></img></div>
                 ):(
-                    <p><img src='./npc_image'></img></p>
+                    <p><img src={"http://localhost:3000/uploads/npc_image.png"} width="100px"></img></p>
                 )}
                 <div className='npc-category'> Category: {npc.category}</div>
                 <br />
