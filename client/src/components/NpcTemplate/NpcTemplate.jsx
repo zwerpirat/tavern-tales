@@ -22,16 +22,14 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
 
     return (
         <div className='npc-template'>
-            <button type="delete" className='button-delete' onClick={handleDeleteNPC}>🗑️</button>
-            <button type="delete" className='button-edit'>✏️</button>
-            <button type="favorite" className='button-favorite'>❤️</button>
+
 
             <div className='name-title'> <h3>{npc.name}</h3></div>
             <div className='npc-content'>
-            <br />
+                <br />
                 {npc.image ? (
-                    <div className='npc-image'><img src={"http://localhost:3000/uploads/"+npc.image} width="100px"></img></div>
-                ):(
+                    <div className='npc-image'><img src={"http://localhost:3000/uploads/" + npc.image} width="150px"></img></div>
+                ) : (
                     <p><img src={"http://localhost:3000/uploads/npc_image.png"} width="100px"></img></p>
                 )}
                 <div className='npc-category'> Category: {npc.category}</div>
@@ -40,9 +38,14 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
                 <br />
                 <div className='npc-location'> Located at: {npc.location}</div>
                 <br />
+                <button type="delete" className='button-delete' onClick={handleDeleteNPC}>🗑️</button>
+                <button type="delete" className='button-edit'>✏️</button>
+                <button type="favorite" className='button-favorite'>❤️</button>
+    
                 <div className='npc-description'> Short Info: {npc.description}</div>
                 <br />
                 <div className='npc-favorite'> {npc.favorite}</div>
+
 
             </div>
 

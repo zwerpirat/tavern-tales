@@ -86,6 +86,14 @@ body {
   margin: 2em;
 }
 
+.npc-image {
+  float:right;
+  margin-right: 10px;
+}
+.npc-description {
+  float: left;
+}
+
 .create-npc-form {
   border-style: dashed;
   border-width: 5px;
