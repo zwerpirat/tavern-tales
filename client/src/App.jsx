@@ -21,17 +21,14 @@ const App = () => {
 
 
   // creating an NPC
-  const handleCreateNPC = async (newNPC) => {
+  const handleCreateNPC = async (formData) => {
+    console.log(formData);
     const result = await fetch(API_BASE_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newNPC)
+      body: formData
     });
     if (result.ok) {
       const npc = await result.json();
-      const npcs = [...npcs];
       npcs.push(npc);
     }
 
@@ -67,14 +64,14 @@ const App = () => {
 
       <div className='hero-npc'>
         <img src={bob} />
-        <HeroNPCTemplate />
+        <HeroNPCTemplate/>
 
       </div>
 
       {/*showing all the npcs on click */}
       <div className='all-npcs'>
         {/*<button onClick={}> Show all NPCs </button>*/}
-        <ul>
+        <section className=''>
           {npcs.length > 0 ? (
             npcs.map(npc => (
               npc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -88,7 +85,7 @@ const App = () => {
           ) : (
             <p>Not found</p>
           )}
-        </ul>
+        </section>
       </div>
 
       <div className='create-npc-form'>

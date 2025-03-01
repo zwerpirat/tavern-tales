@@ -22,8 +22,8 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
 
     return (
         <div className='npc-template'>
-            <button type="delete" className='button-delete' onClick={handleDeleteNPC}>delete</button>
-            <button type="delete" className='button-edit'>edit</button>
+            <button type="delete" className='button-delete' onClick={handleDeleteNPC}>🗑️</button>
+            <button type="delete" className='button-edit'>✏️</button>
             <button type="favorite" className='button-favorite'>❤️</button>
 
             <div className='name-title'> <h3>{npc.name}</h3></div>
@@ -37,6 +37,12 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
                 <div className='npc-description'> Short Info: {npc.description}</div>
                 <br />
                 <div className='npc-favorite'> {npc.favorite}</div>
+                <br />
+                {npc.image ? (
+                    <div className='npc-image'><img src={"http://localhost:3000/uploads/"+npc.image} width="100px"></img></div>
+                ):(
+                    <p>No Image</p>
+                )}
             </div>
 
         </div>

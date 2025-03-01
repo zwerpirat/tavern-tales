@@ -1,7 +1,34 @@
 import express, { Request, Response, Router } from 'express';
 import NPC from './models/npc';
+import uploadDirectory from './app';
+import multer from 'multer';
 
 const router: Router = express.Router();
+
+const imageStore = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, uploadDirectory);
+    },
+    filename: (req, file, callback) => {
+        callback(null, file.originalname);
+    }
+});
+
+const filter = (req: Request, file: Express.Multer.File, callback: multer.FileFilterCallback) => {
+    if(file.mimetype.startsWith('image/')) {
+        callback(null, true);
+    } else {
+        callback( new Error('Not an image, buddy!'));
+    }
+};
+
+const uploadHandler = multer({
+    storage: imageStore,
+    fileFilter: filter,
+    limits: {
+        fileSize: 5 * 1024 * 1024 // ~5MB
+    }
+})
 
 // Define 4 Routes for NPCs: 
 // /npc (GET): show all npcs in database
@@ -25,15 +52,16 @@ router.get('/npc', async (req: Request, res: Response) => {
 // add a npc to the database
 // should return a 400 if a parameter (name, race, location, description) is missing 
 
-router.post('/npc', async (req: Request, res: Response) => {
+router.post('/npc', uploadHandler.single('image'), async (req: Request, res: Response) => {
     try {
         // error handling if any required parameter is missing as an input from the user
         const missingParameters = [];
         if (!req.body.name) missingParameters.push('name');
         if (!req.body.race) missingParameters.push('race');
-       // if (!req.body.category) missingParameters.push('category');
+        if (!req.body.category) missingParameters.push('category');
         if (!req.body.location) missingParameters.push('location');
         if (!req.body.description) missingParameters.push('description');
+        if (!req.body.favorite) missingParameters.push('favorite');
 
         if (missingParameters.length > 0) {
             res.status(400).json({
@@ -43,6 +71,11 @@ router.post('/npc', async (req: Request, res: Response) => {
             // if no parameters is missing, new NPC is created   
         } else {
             const npc = await NPC.create(req.body);
+            if(req.file) {
+                npc.image = req.file.originalname;
+            } else {
+                npc.image = '';
+            }
             await npc.save();
             res.status(201).json(npc);
         }

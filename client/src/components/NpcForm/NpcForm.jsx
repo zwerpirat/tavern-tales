@@ -8,7 +8,9 @@ const NpcForm = ({ onAddNpc }) => {
     const [race, setRace] = useState('');
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
-    const [favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState('false');
+    const [selectedFile, setSelectedFile] = useState(null)
+    const API_BASE_URL = 'http://localhost:3000/npc';
 
     const handleSubmit = async (npc) => {
         npc.preventDefault();
@@ -18,15 +20,26 @@ const NpcForm = ({ onAddNpc }) => {
             race: race,
             location: location,
             description: description,
-            favorite: favorite
+            favorite: favorite,
         };
-        await onAddNpc(newNPC);
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('race', race);
+        formData.append('category', category);
+        formData.append('location', location);
+        formData.append('description', description);
+        formData.append('favorite', favorite);
+        formData.append('image', selectedFile);
+
+        await onAddNpc(formData);
         setName('');
         setCategory('');
         setRace('');
         setLocation('');
         setDescription('');
-        setFavorite(false);
+        setFavorite('false');
+        setSelectedFile(null);
     }
 
     return (
@@ -62,7 +75,15 @@ const NpcForm = ({ onAddNpc }) => {
             </div>
             <div className="element-group">
                 <label>Favorite</label>
-                <input type="text" name="favorite" className="input-box" onChange={(InputNPC) => setFavorite(InputNPC.target.value)} required placeholder="Add this NPC to your favorites!"></input>
+                <select type="text" name="favorite" className="input-box" onChange={(InputNPC) => setFavorite(InputNPC.target.value)} required placeholder="Add this NPC to your favorites!">
+                    <option value="select">Add to favorites?</option>
+                    <option value="true">yes</option>
+                    <option value="false">no</option>
+                </select>
+            </div>
+            <div className="submit-image">
+                <label>NPC Image</label>
+                <input type="file" name="image" onChange={(InputNPC)=>setSelectedFile(InputNPC.target.files[0])}></input>
             </div>
 
             <button type="submit">Create NPC</button>

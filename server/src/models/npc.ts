@@ -8,7 +8,8 @@ interface NPCAttributes {
   race: string,
   location: string,
   description: string,
-  favorite: boolean
+  favorite: boolean,
+  image: string
 }
 
 class NPC extends Model<NPCAttributes> implements NPCAttributes {
@@ -19,6 +20,7 @@ class NPC extends Model<NPCAttributes> implements NPCAttributes {
   public location!: string;
   public description!: string;
   public favorite!: boolean
+  public image!: string;
 }
 
 // initializing a new table with sequelize
@@ -52,6 +54,10 @@ NPC.init(
     favorite: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   },
   {

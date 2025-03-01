@@ -2,7 +2,9 @@
 import express, { Application } from 'express';
 import router from './routers';
 import sequelize from './models/modelindex';
-import cors from 'cors'
+import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
 
 // Create a new express application instance
 const app: Application = express();
@@ -16,9 +18,18 @@ const corsOptions = {
     credentials: true
 }
 
+const uploadDirectory = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadDirectory)) {
+    fs.mkdirSync(uploadDirectory);
+}
+
+export default uploadDirectory;
+
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use('/', router);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 async function startServer() {
     try {
