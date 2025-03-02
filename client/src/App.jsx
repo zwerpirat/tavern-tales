@@ -9,6 +9,7 @@ import HeroNPCTemplate from './components/HeroNPC';
 
 // API setting to localhost + get method
 const API_BASE_URL = 'http://localhost:3000/npc';
+
 const API_OPTIONS = {
   method: 'GET',
   headers: {
@@ -23,7 +24,6 @@ const App = () => {
 
   // creating an NPC
   const handleCreateNPC = async (formData) => {
-    console.log(formData);
     const result = await fetch(API_BASE_URL, {
       method: 'POST',
       body: formData
@@ -43,12 +43,11 @@ const App = () => {
       }
       const data = await response.json();
       setNPCs(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
   }
-  
+
   const handleClick = async () => {
     setIsVisible(!isVisible)
   }
@@ -70,8 +69,7 @@ const App = () => {
 
       <div className='hero-npc'>
         <img src={bob} />
-        <HeroNPCTemplate />
-
+        <HeroNPCTemplate base_url={API_BASE_URL} />
       </div>
 
       {/*showing all the npcs on click */}
@@ -84,6 +82,8 @@ const App = () => {
                 npc.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   npc.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
                   npc.location.toLowerCase().includes(searchTerm.toLowerCase()) ? (
+
+                  /* NpcTemplate(data[0], data, callbackfunctiontosetdata); */ 
                   <NpcTemplate npc={npc} key={npc.id} npcs={npcs} setNPCs={setNPCs} />
                 ) : (
                   <p key={npc.id}></p>

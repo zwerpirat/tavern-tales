@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 
+// func NpcTemplate(npc, npcs, setNPCs) {}
 const NpcTemplate = ({ npc, npcs, setNPCs }) => {
 
     const API_BASE_URL = 'http://localhost:3000/npc';
@@ -22,8 +23,6 @@ const NpcTemplate = ({ npc, npcs, setNPCs }) => {
 
     return (
         <div className='npc-template'>
-
-
             <div className='name-title'> <h3>{npc.name}</h3></div>
             <div className='npc-content'>
                 <br />
